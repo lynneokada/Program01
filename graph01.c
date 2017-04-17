@@ -4,10 +4,12 @@
 
 int main(int argc, char* argv[]) 
 {
-	FILE *inputfile = fopen(argv[0], "w");
-	printf("graph01 running");
+	FILE *inputfile = fopen(argv[1], "w");
 
-	
+	if (!inputfile) {
+		printf("Usage: no inputfile found");
+		return 1;
+	}
 
 	return 0;
 }
