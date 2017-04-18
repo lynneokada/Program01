@@ -1,11 +1,11 @@
 /* intVec.h
- * intVec header file - 
+ * intVec header file - allow access go intVec functions from other files.
  */
 
 #ifndef C101IntVec
 #define C101IntVec
 /* Multiple typedefs for the same type are an error in C.
- * The above ifndef and define prevent multiple copies of code below. 
+ * The above ifndef and define prevent multiple copies of code below.
  */
 
 typedef struct IntVecNode * IntVec;
@@ -17,7 +17,7 @@ static const int intInitCap = 4;
  */
 
 /** intTop()
- * (what are the preconditions? Replace question with your text)
+ * precondition: IntVec has been constructed and data is not empty.
  */
 int intTop(IntVec myVec);
 
@@ -47,9 +47,25 @@ int intCapacity(IntVec myVec);
 IntVec intMakeEmptyVec(void);
 
 /* Manipulation Procedures
+ */
+
+/** intVecPush()
+ * precondition: myVec has been constructed.
+ * postconditions: Let /sz/ = intSize(myVec) before the call.
+ *                 Let /cap/ = intCapacity(myVec) before the call.
+ *    Then after the call, intSize(myVec) == /sz/+1,
+ *        and intTop(myVec) == newE and intData(myVec, /sz/) == newE.
+ *    Also, for all 0 <= i < /sz/: intData(myVec, i) is unchanged.
+ *    Also, if (/sz/+1) > /cap/, then after the call,
+ *        intCapacity(myVec) = 2 * /cap/.
+ *    otherwise, intCapacity(myVec) is unchanged.
+ */
+void intVecPush(IntVec myVec, int newE);
+
+/** intVecPop()
  * precondition: myVec has been constructed and intSize(myVec) > 0.
- * postcondition: Let /sz/ = intSize(myVec) before the call.
- *				  Let /cap/ = intCapacity(myVec) before the call.
+ * postconditions: Let /sz/ = intSize(myVec) before the call.
+ *                 Let /cap/ = intCapacity(myVec) before the call.
  *    Then after the call, intSize(myVec) == /sz/-1,
  *        intTop(myVec) == intData(/sz/-2).
  *    Also, for all 0 <= i < /sz/-1: intData(myVec, i) is unchanged.
@@ -59,3 +75,4 @@ void intVecPop(IntVec myVec);
 
 
 #endif
+
