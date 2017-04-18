@@ -11,11 +11,12 @@
  };
 
 int intTop(IntVec myVec) {
-	int top = myVec->data[sz-1];
+	int top = myVec->data[myVec->sz-1];
 	return top;
 }
 
 int intData(IntVec myVec, int i) {
+
 	return 0;
 }
 
