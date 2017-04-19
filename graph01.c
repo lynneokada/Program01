@@ -27,13 +27,14 @@ int main(int argc, char* argv[])
 		double weight;
 		int sscanfRetn = sscanf(line, " %i %i %lf", &a,&b,&weight);
 		// printf("element in line is %i\n", sscanfRetn);
-		// printf("values: a=%i, b=%i", a, b);
+		printf("values: a=%i, b=%i\n", a, b);
 		// printf("%s\n", line);
 
 		IntVec newVec;
 		if (array[a] != NULL) {
 			newVec = array[a];
 		} else {
+			printf("a = %i\n", a);
 			newVec = intMakeEmptyVec();
 		}
 
@@ -55,10 +56,10 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	printf("%i\n", intData(array[6], 0));
-	printf("%i\n", intData(array[6], 1));
-	printf("%i\n", intData(array[6], 2));
-	printf("%i\n", intData(array[6], 3));
+	// printf("%i\n", intData(array[6], 0));
+	// printf("%i\n", intData(array[6], 1));
+	// printf("%i\n", intData(array[6], 2));
+	// printf("%i\n", intData(array[6], 3));
 	for (int i=1; i<arraySize; i++) {
 		printf("node %i\n", i);
 		for (int j=0; j<intSize(array[i]); j++) {

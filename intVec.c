@@ -66,7 +66,7 @@ void intVecPush(IntVec myVec, int newE) {
 
 	// printf("intCapacity(myVec) = %i\n", intCapacity(myVec));
 	if (myVec->capacity == myVec->sz) {
-		// double array
+		myVec->capacity *= 2;
 	} else {
 		myVec->sz = intSize(myVec)+1;
 		int i = 0;
@@ -80,5 +80,18 @@ void intVecPush(IntVec myVec, int newE) {
 }
 
 void intVecPop(IntVec myVec) {
+	if (myVec == NULL) {
+		perror("error: IntVec has not been constructed.");
+		return;
+	} else if (intSize(myVec)<=0) {
+		perror("error: IntVec is empty.");
+		return;
+	}
 
+	if (myVec>intInitCap && myVec->sz == myVec->capacity/2) {
+		myVec->capacity = intCapacity(myVec)/2;
+	}
+	myVec->sz = intSize(myVec)-1;
+
+	return;
 }
