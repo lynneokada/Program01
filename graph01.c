@@ -39,20 +39,31 @@ int main(int argc, char* argv[])
 
 		if (sscanfRetn == 2) {
 			weight = 0.0;
-			printf("values: a=%i, b=%i\n", a, b);
+			// printf("values: a=%i, b=%i\n", a, b);
 			intVecPush(newVec, b);
+			array[a] = newVec;
+
+			// printf("\nsize of newVec: %d\n", intSize(newVec));
+			// printf("capacity of newVec: %d\n", intCapacity(newVec));
 		} else if (sscanfRetn == 3) {
-			printf("values: a=%i, b=%i, weight=%f\n", a, b, weight);
+			// printf("values: a=%i, b=%i, weight=%f\n", a, b, weight);
 			intVecPush(newVec, b);
+			array[a] = newVec;
+
+			// printf("\nsize of newVec: %d\n", intSize(newVec));
+			// printf("capacity of newVec: %d\n", intCapacity(newVec));
 		}
 	}
 
-	for (int i=0; i<arraySize; i++) {
-		printf("index: %i\n", i);
-		// for (int j=0; j<intCapacity(array[i]); j++) {
-		// 	printf("index %i\n", intData(array[i], j));
-		// }
-		
+	printf("%i\n", intData(array[6], 0));
+	printf("%i\n", intData(array[6], 1));
+	printf("%i\n", intData(array[6], 2));
+	printf("%i\n", intData(array[6], 3));
+	for (int i=1; i<arraySize; i++) {
+		printf("node %i\n", i);
+		for (int j=0; j<intSize(array[i]); j++) {
+			printf("%i\n", intData(array[i], j));
+		}
 	}
 	
 	return 0;

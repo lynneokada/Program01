@@ -18,41 +18,39 @@ int intTop(IntVec myVec) {
 		perror("error: IntVec data is empty");
 		return 0;
 	}
-	int n=1;
-	int top = myVec->data[myVec->sz-n];
-	while (top == NULL) {
-		n++;
-		top = myVec->data[myVec->sz-n];
-	}
-	return top;
+
+	return myVec->data[myVec->sz-1];
 }
 
 int intData(IntVec myVec, int i) {
-	if (i < 0 || i > intSize(myVec)) {
-		perror("error: index is out of range.");
+	// printf("intData called\n");
+	if (i < 0 || i >= myVec->sz) {
+		perror("intData error: index is out of range.");
 		return 0;
 	}
 	return myVec->data[i];
 }
 
 int intSize(IntVec myVec) {
+	// printf("intSize called\n");
 	if (myVec == NULL) {
-		perror("error: IntVec has not been constructed");
+		perror("intSize error: IntVec has not been constructed");
 	}
 	return myVec->sz;
 }
 
 int intCapacity(IntVec myVec) {
+	// printf("intCapacity called\n");
 	if (myVec == NULL) {
-		perror("error: IntVec has not been constructed");
+		perror("intCapacity error: IntVec has not been constructed");
 	}
 	return myVec->capacity;
 }
 
 IntVec intMakeEmptyVec(void) {
-	printf("empty intVec created\n");
+	// printf("empty intVec created\n");
 	IntVec newVec = calloc(1,sizeof(struct IntVecNode));
-	int *array = calloc(1, sizeof(int));
+	int *array = calloc(intInitCap, sizeof(int));
 	newVec->data = array;
 	newVec->sz = 0;
 	newVec->capacity = intInitCap;
@@ -66,12 +64,13 @@ void intVecPush(IntVec myVec, int newE) {
 		return;
 	}
 
-	if (intCapacity(myVec) == intSize(myVec)) {
+	// printf("intCapacity(myVec) = %i\n", intCapacity(myVec));
+	if (myVec->capacity == myVec->sz) {
 		// double array
 	} else {
 		myVec->sz = intSize(myVec)+1;
 		int i = 0;
-		while (myVec->data[i] != NULL) {
+		while (myVec->data[i] != 0) {
 			i++;
 		}
 		myVec->data[i] = newE;
