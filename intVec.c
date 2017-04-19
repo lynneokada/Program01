@@ -88,7 +88,7 @@ void intVecPop(IntVec myVec) {
 		return;
 	}
 
-	if (myVec>intInitCap && myVec->sz == myVec->capacity/2) {
+	if (intCapacity(myVec) > intInitCap && myVec->sz == myVec->capacity/2) {
 		myVec->capacity = intCapacity(myVec)/2;
 	}
 	myVec->sz = intSize(myVec)-1;

@@ -29,12 +29,12 @@ int main(int argc, char* argv[])
 		// printf("element in line is %i\n", sscanfRetn);
 		printf("values: a=%i, b=%i\n", a, b);
 		// printf("%s\n", line);
+			printf("a = %i\n", a);
 
 		IntVec newVec;
 		if (array[a] != NULL) {
 			newVec = array[a];
 		} else {
-			printf("a = %i\n", a);
 			newVec = intMakeEmptyVec();
 		}
 
@@ -61,10 +61,13 @@ int main(int argc, char* argv[])
 	// printf("%i\n", intData(array[6], 2));
 	// printf("%i\n", intData(array[6], 3));
 	for (int i=1; i<arraySize; i++) {
-		printf("node %i\n", i);
+		printf("%i     [", i);
 		for (int j=0; j<intSize(array[i]); j++) {
-			printf("%i\n", intData(array[i], j));
+			if (j>0)
+				printf(",");
+			printf("%i", intData(array[i], j));
 		}
+		printf("]\n");
 	}
 	
 	return 0;
