@@ -60,14 +60,14 @@ void intVecPush(IntVec myVec, int newE) {
 	}
 
 	if (myVec->capacity == myVec->sz) {
-		int newCap = myVec->capacity*2;
-		
-		int *dArray = calloc(newCap, sizeof(int));
+		printf("myVec->capacity = %i\n", myVec->capacity);
+		int newCap = 2*myVec->capacity;
+		int *newData =realloc(myVec->data, newCap*sizeof(int));
 
-		for (int i=0; i<sizeof(myVec->data);i++) {
-			dArray[i] = myVec->data[i];
+		if (newData != myVec->data) {
+			myVec->data = newData;
 		}
-		myVec->data = dArray;
+		myVec->capacity = newCap;
 	} else {
 		int i = 0;
 		while (myVec->data[i] != 0) {
