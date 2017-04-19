@@ -19,55 +19,54 @@ int main(int argc, char* argv[])
 	printf("Opened %s for inputs.\n", argv[1]);
 	char line[1024];
 	fgets(line, 1024, inputfile);
-	int arraySize = atoi(line);
+	int arraySize = atoi(line)+1;
 	IntVec array[arraySize];
+
+	// make sure the array is empty
+	for (int i=0;i<arraySize;i++) {
+		array[i] = NULL;
+	}
 
 	while (fgets(line, 1024, inputfile) != NULL) {
 		int a, b;
 		double weight;
 		int sscanfRetn = sscanf(line, " %i %i %lf", &a,&b,&weight);
-		// printf("element in line is %i\n", sscanfRetn);
-		printf("values: a=%i, b=%i\n", a, b);
-		// printf("%s\n", line);
-			printf("a = %i\n", a);
 
 		IntVec newVec;
-		if (array[a] != NULL) {
-			newVec = array[a];
-		} else {
+		if (array[a] == NULL) {
 			newVec = intMakeEmptyVec();
+		} else {
+			newVec = array[a];
 		}
+
+		// printf("a = %i\n", a);
 
 		if (sscanfRetn == 2) {
 			weight = 0.0;
-			// printf("values: a=%i, b=%i\n", a, b);
+			// printf("pushing element %i to indec %i\n", b, a);
 			intVecPush(newVec, b);
 			array[a] = newVec;
-
-			// printf("\nsize of newVec: %d\n", intSize(newVec));
-			// printf("capacity of newVec: %d\n", intCapacity(newVec));
 		} else if (sscanfRetn == 3) {
-			// printf("values: a=%i, b=%i, weight=%f\n", a, b, weight);
 			intVecPush(newVec, b);
 			array[a] = newVec;
-
-			// printf("\nsize of newVec: %d\n", intSize(newVec));
-			// printf("capacity of newVec: %d\n", intCapacity(newVec));
 		}
 	}
 
-	// printf("%i\n", intData(array[6], 0));
-	// printf("%i\n", intData(array[6], 1));
-	// printf("%i\n", intData(array[6], 2));
-	// printf("%i\n", intData(array[6], 3));
-	for (int i=1; i<arraySize; i++) {
-		printf("%i     [", i);
-		for (int j=0; j<intSize(array[i]); j++) {
-			if (j>0)
-				printf(",");
-			printf("%i", intData(array[i], j));
-		}
+	for (int i=0; i<arraySize; i++) {
+		if (i==0) 
+			printf("%i\n", arraySize-1);
+		else if (array[i]==NULL) {
+			printf("%i     [", i);
+			printf("NULL]\n");
+		} else {
+			printf("%i     [", i);	
+			for (int j=0; j<intSize(array[i]); j++) {
+				if (j>0)
+					printf(",");
+				printf("%i", intData(array[i], j));
+			}
 		printf("]\n");
+		}
 	}
 	
 	return 0;
