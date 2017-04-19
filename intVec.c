@@ -32,14 +32,14 @@ int intData(IntVec myVec, int i) {
 
 int intSize(IntVec myVec) {
 	if (myVec == NULL) {
-		perror("intSize error: IntVec has not been constructed");
+		perror("error: IntVec has not been constructed");
 	}
 	return myVec->sz;
 }
 
 int intCapacity(IntVec myVec) {
 	if (myVec == NULL) {
-		perror("intCapacity error: IntVec has not been constructed");
+		perror("error: IntVec has not been constructed");
 	}
 	return myVec->capacity;
 }
@@ -60,8 +60,14 @@ void intVecPush(IntVec myVec, int newE) {
 	}
 
 	if (myVec->capacity == myVec->sz) {
-		myVec->capacity *= 2;
-		printf("capacity is now %i\n", intCapacity(myVec));
+		int newCap = myVec->capacity*2;
+		
+		int *dArray = calloc(newCap, sizeof(int));
+
+		for (int i=0; i<sizeof(myVec->data);i++) {
+			dArray[i] = myVec->data[i];
+		}
+		myVec->data = dArray;
 	} else {
 		int i = 0;
 		while (myVec->data[i] != 0) {

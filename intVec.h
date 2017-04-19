@@ -77,6 +77,5 @@ void intVecPush(IntVec myVec, int newE);
  */
 void intVecPop(IntVec myVec);
 
-
 #endif
 
