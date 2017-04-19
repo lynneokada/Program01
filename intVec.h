@@ -1,6 +1,10 @@
 /* intVec.h
- * intVec header file - allow access go intVec functions from other files.
+ * intVec header file - declare methods for IntVec
  */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #ifndef C101IntVec
 #define C101IntVec
