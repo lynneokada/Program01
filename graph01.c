@@ -20,12 +20,12 @@ int main(int argc, char* argv[])
 	char line[1024];
 	fgets(line, 1024, inputfile);
 	int arraySize = atoi(line)+1;
-	IntVec array[arraySize];
+	IntVec *array = calloc(arraySize, sizeof(IntVec));
 
-	// make sure the array is empty
-	for (int i=0;i<arraySize;i++) {
-		array[i] = NULL;
-	}
+	// // make sure the array is empty
+	// for (int i=0;i<arraySize;i++) {
+	// 	array[i] = NULL;
+	// }
 
 	while (fgets(line, 1024, inputfile) != NULL) {
 		int a, b;
@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
 			newVec = array[a];
 		}
 
-		printf("pushing element %i to indec %i\n", b, a);
+		printf("pushing element %i to index %i\n", b, a);
 		if (sscanfRetn == 2) {
 			weight = 0.0;
 			intVecPush(newVec, b);
@@ -58,6 +58,7 @@ int main(int argc, char* argv[])
 			printf("NULL]\n");
 		} else {
 			printf("%i     [", i);	
+			// printf("intSize(array[i]) %i\n", intSize(array[i]));
 			for (int j=0; j<intSize(array[i]); j++) {
 				if (j>0)
 					printf(",");
