@@ -59,8 +59,8 @@ void intVecPush(IntVec myVec, int newE) {
 		return;
 	}
 
+	// printf("newE = %i\n", newE);
 	if (myVec->capacity == myVec->sz) {
-		printf("myVec->capacity = %i\n", myVec->capacity);
 		int newCap = 2*myVec->capacity;
 		int *newData =realloc(myVec->data, newCap*sizeof(int));
 
@@ -68,13 +68,12 @@ void intVecPush(IntVec myVec, int newE) {
 			myVec->data = newData;
 		}
 		myVec->capacity = newCap;
-	} else {
-		int i = 0;
-		while (myVec->data[i] != 0) {
-			i++;
-		}
-		myVec->data[i] = newE;
 	}
+	int i = 0;
+	while (myVec->data[i] != 0) {
+		i++;
+	}
+	myVec->data[i] = newE;
 	myVec->sz = intSize(myVec)+1;
 	return;
 }

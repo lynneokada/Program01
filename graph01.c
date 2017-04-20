@@ -39,9 +39,9 @@ int main(int argc, char* argv[])
 			newVec = array[a];
 		}
 
+		printf("pushing element %i to indec %i\n", b, a);
 		if (sscanfRetn == 2) {
 			weight = 0.0;
-			// printf("pushing element %i to indec %i\n", b, a);
 			intVecPush(newVec, b);
 			array[a] = newVec;
 		} else if (sscanfRetn == 3) {
