@@ -1,5 +1,7 @@
 /* intVec.c
  * define methods for intVec
+ * Lynne Okada
+ * lyokada@ucsc.edu
  */
 
  #include "intVec.h"
@@ -59,6 +61,7 @@ void intVecPush(IntVec myVec, int newE) {
 		return;
 	}
 
+	printf("newE = %i\n", newE);
 	if (myVec->capacity == myVec->sz) {
 		int newCap = 2*myVec->capacity;
 		int *newData = realloc(myVec->data, newCap*sizeof(int));

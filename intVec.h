@@ -1,5 +1,7 @@
 /* intVec.h
  * intVec header file - declare methods for IntVec
+ * Lynne Okada
+ * lyokada@ucsc.edu
  */
 
 #include <stdio.h>

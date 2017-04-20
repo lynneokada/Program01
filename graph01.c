@@ -1,5 +1,7 @@
 /* graph01.c
  * main function - read in inputfile and build a graph in C 
+ * Lynne Okada 
+ * lyokada@ucsc.edu
  */
 
 #include <stdio.h>

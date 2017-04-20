@@ -1,5 +1,6 @@
 # Makefile - PROGRAM 01
-
+# Lynne Okada
+# lyokada@ucsc.edu
 # ====================================================
 
 # defining "make" variables

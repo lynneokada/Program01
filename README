@@ -1,5 +1,21 @@
 "I have read and understood the Academic Misconduct Policy for Undergraduates, the related sections 102.01-102.016 and 105.15 of the UC Santa Cruz Student Policies and Regulations Handbook, and the related sections of the class syllabus."
 
-Lynne Okada
-
 "I wrote this assignment using only permitted sources that do not require citation, according to the syllabus."
+
+======================================
+
+Lynne Okada
+pa01
+
+The program contains the files graph01.c intVec.h and intVec.c
+
+graph01 holds the main function that reads in a textile containing a list of graph node information that needs to be stored by creating an intVec object. The functions in intVec.c allow for retrieval of node data, push and pop.
+
+=======================================
+run program:
+
+// compline files
+make
+
+//run program
+./graph01 <inputfile_name.in>
